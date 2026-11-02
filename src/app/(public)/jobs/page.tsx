@@ -1,0 +1,18 @@
+import Link from "next/link";
+import { ArrowUpRight,MapPin,Search } from "lucide-react";
+import { listPublicJobs } from "@/server/dal/jobs";
+import { AppError } from "@/lib/errors";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { salaryLabel } from "@/components/job-description";
+export const metadata={title:"Khám phá việc làm"};
+export default async function Jobs({searchParams}:{searchParams:Promise<Record<string,string|undefined>>}){
+  const params=await searchParams;
+  const {result,error}=await listPublicJobs(params).then(result=>({result,error:""})).catch(e=>{if(e instanceof AppError&&e.status===400)return {result:{items:[],next_cursor:null,configured:true},error:e.message as string};throw e;});
+  const next=new URLSearchParams(Object.entries(params).filter((entry):entry is [string,string]=>typeof entry[1]==="string"));if(result.next_cursor)next.set("cursor",result.next_cursor);
+  return <div><header className="public-jobs-heading"><h1>Cơ hội tiếp theo,<br/><span>phù hợp với bạn.</span></h1><p>Tìm vị trí theo năng lực, kỹ năng và mức lương bạn mong muốn.</p></header><form action="/jobs" method="GET" className="job-search-form"><div className="search-fields"><div className="field search-keyword"><label htmlFor="q">Vị trí hoặc từ khóa</label><Input id="q" name="q" placeholder="Ví dụ: Frontend Developer" defaultValue={params.q} maxLength={160}/></div><div className="field"><label htmlFor="skill">Kỹ năng</label><Input id="skill" name="skill" placeholder="Ví dụ: TypeScript" defaultValue={params.skill} maxLength={100}/></div><div className="field"><label htmlFor="salary_min">Lương từ (VND/tháng)</label><Input id="salary_min" name="salary_min" type="number" min={0} placeholder="Không giới hạn" defaultValue={params.salary_min}/></div><div className="field"><label htmlFor="salary_max">Lương đến (VND/tháng)</label><Input id="salary_max" name="salary_max" type="number" min={0} placeholder="Không giới hạn" defaultValue={params.salary_max}/></div></div><div className="search-form-actions"><Button type="submit"><Search size={17} aria-hidden="true"/>Tìm việc làm</Button><Link className="text-link" href="/jobs">Xóa bộ lọc</Link></div></form>
+    {error&&<div role="alert" className="notice notice-error">{error}</div>}
+    {!result.configured?<div className="notice" role="status">Danh sách việc làm chưa sẵn sàng. Vui lòng quay lại sau.</div>:result.items.length?<section className="public-job-list" aria-label="Kết quả việc làm">{result.items.map(job=><article className="public-job-row" key={job.id}><div><h2><Link href={`/jobs/${job.id}`}>{job.title}</Link></h2><div className="job-card-facts"><span><MapPin size={15} aria-hidden="true"/>{job.location}</span><strong>{salaryLabel(job.salary_min,job.salary_max)}</strong></div><p>{job.summary}</p><div className="skill-tags">{job.skills.slice(0,5).map(skill=><span key={skill}>{skill}</span>)}</div></div><Link href={`/jobs/${job.id}`} className="text-link">Chi tiết<ArrowUpRight size={16} aria-hidden="true"/></Link></article>)}</section>:!error&&<section className="search-empty"><Search size={29} strokeWidth={1.5} aria-hidden="true"/><h2>{params.q||params.skill||params.salary_min||params.salary_max?"Chưa tìm thấy vị trí phù hợp.":"Chưa có tin tuyển dụng đang mở."}</h2><p>Thử từ khóa khác hoặc bỏ bớt bộ lọc để xem thêm cơ hội.</p><Link href="/jobs" className="text-link">Xem tất cả việc làm<ArrowUpRight size={15} aria-hidden="true"/></Link></section>}
+    {result.next_cursor&&<div className="pagination"><Button asChild variant="secondary"><Link href={`/jobs?${next}`}>Xem thêm việc làm</Link></Button></div>}
+  </div>;
+}

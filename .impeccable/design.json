@@ -1,0 +1,463 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-02T11:47:47.323Z",
+  "title": "Design System: LocCV",
+  "extensions": {
+    "colorMeta": {
+      "background": {
+        "role": "neutral",
+        "displayName": "Warm Ground",
+        "canonical": "#f8f9f5",
+        "tonalRamp": [
+          "oklch(15% 0.0017 117.92)",
+          "oklch(26% 0.0034 117.92)",
+          "oklch(38% 0.0048 117.92)",
+          "oklch(49% 0.0053 117.92)",
+          "oklch(61% 0.0052 117.92)",
+          "oklch(72% 0.0043 117.92)",
+          "oklch(84% 0.0027 117.92)",
+          "oklch(95% 0.0009 117.92)"
+        ]
+      },
+      "foreground": {
+        "role": "neutral",
+        "displayName": "Forest Ink",
+        "canonical": "#23382f",
+        "tonalRamp": [
+          "oklch(15% 0.0102 165.84)",
+          "oklch(26% 0.0201 165.84)",
+          "oklch(38% 0.0279 165.84)",
+          "oklch(49% 0.0312 165.84)",
+          "oklch(61% 0.0302 165.84)",
+          "oklch(72% 0.0251 165.84)",
+          "oklch(84% 0.0159 165.84)",
+          "oklch(95% 0.0052 165.84)"
+        ]
+      },
+      "primary": {
+        "role": "primary",
+        "displayName": "Professional Forest",
+        "canonical": "#24543f",
+        "tonalRamp": [
+          "oklch(15% 0.0207 162.73)",
+          "oklch(26% 0.0409 162.73)",
+          "oklch(38% 0.0566 162.73)",
+          "oklch(49% 0.0634 162.73)",
+          "oklch(61% 0.0613 162.73)",
+          "oklch(72% 0.0510 162.73)",
+          "oklch(84% 0.0322 162.73)",
+          "oklch(95% 0.0105 162.73)"
+        ]
+      },
+      "pine": {
+        "role": "primary",
+        "displayName": "Pine Anchor",
+        "canonical": "#173f35",
+        "tonalRamp": [
+          "oklch(15% 0.0158 174.30)",
+          "oklch(26% 0.0311 174.30)",
+          "oklch(38% 0.0431 174.30)",
+          "oklch(49% 0.0483 174.30)",
+          "oklch(61% 0.0467 174.30)",
+          "oklch(72% 0.0389 174.30)",
+          "oklch(84% 0.0245 174.30)",
+          "oklch(95% 0.0080 174.30)"
+        ]
+      },
+      "pine-deep": {
+        "role": "primary",
+        "displayName": "Deep Pine",
+        "canonical": "#12362d",
+        "tonalRamp": [
+          "oklch(15% 0.0145 174.16)",
+          "oklch(26% 0.0286 174.16)",
+          "oklch(38% 0.0396 174.16)",
+          "oklch(49% 0.0443 174.16)",
+          "oklch(61% 0.0429 174.16)",
+          "oklch(72% 0.0357 174.16)",
+          "oklch(84% 0.0225 174.16)",
+          "oklch(95% 0.0073 174.16)"
+        ]
+      },
+      "lime": {
+        "role": "primary",
+        "displayName": "Pale Lime",
+        "canonical": "#daedb5",
+        "tonalRamp": [
+          "oklch(15% 0.0247 123.11)",
+          "oklch(26% 0.0487 123.11)",
+          "oklch(38% 0.0675 123.11)",
+          "oklch(49% 0.0756 123.11)",
+          "oklch(61% 0.0731 123.11)",
+          "oklch(72% 0.0608 123.11)",
+          "oklch(84% 0.0384 123.11)",
+          "oklch(95% 0.0125 123.11)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Quiet Green Gray",
+        "canonical": "#64706a",
+        "tonalRamp": [
+          "oklch(15% 0.0056 164.27)",
+          "oklch(26% 0.0110 164.27)",
+          "oklch(38% 0.0153 164.27)",
+          "oklch(49% 0.0171 164.27)",
+          "oklch(61% 0.0165 164.27)",
+          "oklch(72% 0.0137 164.27)",
+          "oklch(84% 0.0087 164.27)",
+          "oklch(95% 0.0028 164.27)"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Soft Divider",
+        "canonical": "#dbe1d7",
+        "tonalRamp": [
+          "oklch(15% 0.0048 132.48)",
+          "oklch(26% 0.0095 132.48)",
+          "oklch(38% 0.0132 132.48)",
+          "oklch(49% 0.0148 132.48)",
+          "oklch(61% 0.0143 132.48)",
+          "oklch(72% 0.0119 132.48)",
+          "oklch(84% 0.0075 132.48)",
+          "oklch(95% 0.0025 132.48)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "White Surface",
+        "canonical": "#fff",
+        "tonalRamp": [
+          "oklch(15% 0.0000 89.88)",
+          "oklch(26% 0.0000 89.88)",
+          "oklch(38% 0.0000 89.88)",
+          "oklch(49% 0.0000 89.88)",
+          "oklch(61% 0.0000 89.88)",
+          "oklch(72% 0.0000 89.88)",
+          "oklch(84% 0.0000 89.88)",
+          "oklch(95% 0.0000 89.88)"
+        ]
+      },
+      "error": {
+        "role": "neutral",
+        "displayName": "Error Red",
+        "canonical": "#a33035",
+        "tonalRamp": [
+          "oklch(15% 0.0489 22.47)",
+          "oklch(26% 0.0964 22.47)",
+          "oklch(38% 0.1336 22.47)",
+          "oklch(49% 0.1496 22.47)",
+          "oklch(61% 0.1447 22.47)",
+          "oklch(72% 0.1204 22.47)",
+          "oklch(84% 0.0760 22.47)",
+          "oklch(95% 0.0248 22.47)"
+        ]
+      },
+      "input-border": {
+        "role": "neutral",
+        "displayName": "Field Edge",
+        "canonical": "#cfd8cb",
+        "tonalRamp": [
+          "oklch(15% 0.0065 135.84)",
+          "oklch(26% 0.0129 135.84)",
+          "oklch(38% 0.0178 135.84)",
+          "oklch(49% 0.0200 135.84)",
+          "oklch(61% 0.0193 135.84)",
+          "oklch(72% 0.0161 135.84)",
+          "oklch(84% 0.0102 135.84)",
+          "oklch(95% 0.0033 135.84)"
+        ]
+      },
+      "focus": {
+        "role": "neutral",
+        "displayName": "Focus Green",
+        "canonical": "#5a876b",
+        "tonalRamp": [
+          "oklch(15% 0.0213 156.40)",
+          "oklch(26% 0.0420 156.40)",
+          "oklch(38% 0.0583 156.40)",
+          "oklch(49% 0.0652 156.40)",
+          "oklch(61% 0.0631 156.40)",
+          "oklch(72% 0.0525 156.40)",
+          "oklch(84% 0.0331 156.40)",
+          "oklch(95% 0.0108 156.40)"
+        ]
+      },
+      "input-focus": {
+        "role": "neutral",
+        "displayName": "Field Focus",
+        "canonical": "#a8c598",
+        "tonalRamp": [
+          "oklch(15% 0.0226 134.57)",
+          "oklch(26% 0.0445 134.57)",
+          "oklch(38% 0.0617 134.57)",
+          "oklch(49% 0.0690 134.57)",
+          "oklch(61% 0.0668 134.57)",
+          "oklch(72% 0.0555 134.57)",
+          "oklch(84% 0.0351 134.57)",
+          "oklch(95% 0.0114 134.57)"
+        ]
+      },
+      "sidebar": {
+        "role": "neutral",
+        "displayName": "Pale Workspace",
+        "canonical": "#eef2e9",
+        "tonalRamp": [
+          "oklch(15% 0.0041 126.37)",
+          "oklch(26% 0.0081 126.37)",
+          "oklch(38% 0.0112 126.37)",
+          "oklch(49% 0.0126 126.37)",
+          "oklch(61% 0.0121 126.37)",
+          "oklch(72% 0.0101 126.37)",
+          "oklch(84% 0.0064 126.37)",
+          "oklch(95% 0.0021 126.37)"
+        ]
+      },
+      "nav-active": {
+        "role": "neutral",
+        "displayName": "Selected Leaf",
+        "canonical": "#dce9cc",
+        "tonalRamp": [
+          "oklch(15% 0.0133 126.94)",
+          "oklch(26% 0.0262 126.94)",
+          "oklch(38% 0.0364 126.94)",
+          "oklch(49% 0.0407 126.94)",
+          "oklch(61% 0.0394 126.94)",
+          "oklch(72% 0.0328 126.94)",
+          "oklch(84% 0.0207 126.94)",
+          "oklch(95% 0.0067 126.94)"
+        ]
+      },
+      "secondary-hover": {
+        "role": "neutral",
+        "displayName": "Secondary Wash",
+        "canonical": "#eef3e8",
+        "tonalRamp": [
+          "oklch(15% 0.0050 126.82)",
+          "oklch(26% 0.0099 126.82)",
+          "oklch(38% 0.0137 126.82)",
+          "oklch(49% 0.0154 126.82)",
+          "oklch(61% 0.0149 126.82)",
+          "oklch(72% 0.0124 126.82)",
+          "oklch(84% 0.0078 126.82)",
+          "oklch(95% 0.0025 126.82)"
+        ]
+      },
+      "ghost": {
+        "role": "neutral",
+        "displayName": "Quiet Action",
+        "canonical": "#526259",
+        "tonalRamp": [
+          "oklch(15% 0.0079 160.72)",
+          "oklch(26% 0.0155 160.72)",
+          "oklch(38% 0.0215 160.72)",
+          "oklch(49% 0.0241 160.72)",
+          "oklch(61% 0.0233 160.72)",
+          "oklch(72% 0.0194 160.72)",
+          "oklch(84% 0.0123 160.72)",
+          "oklch(95% 0.0040 160.72)"
+        ]
+      },
+      "ghost-hover": {
+        "role": "neutral",
+        "displayName": "Ghost Wash",
+        "canonical": "#e9eee4",
+        "tonalRamp": [
+          "oklch(15% 0.0046 128.63)",
+          "oklch(26% 0.0092 128.63)",
+          "oklch(38% 0.0127 128.63)",
+          "oklch(49% 0.0142 128.63)",
+          "oklch(61% 0.0137 128.63)",
+          "oklch(72% 0.0114 128.63)",
+          "oklch(84% 0.0072 128.63)",
+          "oklch(95% 0.0024 128.63)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Story Display",
+        "purpose": "Authentication story headline."
+      },
+      "headline": {
+        "displayName": "Auth Headline",
+        "purpose": "Authentication form page title; responsive sizes are documented in DESIGN.md."
+      },
+      "title": {
+        "displayName": "Workspace Title",
+        "purpose": "Account workspace page heading."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Default reading text."
+      },
+      "label": {
+        "displayName": "Field Label",
+        "purpose": "Form labels."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "button-state",
+        "value": "background .18s, color .18s",
+        "purpose": "Button hover color changes; default CSS easing."
+      },
+      {
+        "name": "input-edge",
+        "value": "border-color .15s",
+        "purpose": "Field hover and focus border changes; default CSS easing."
+      },
+      {
+        "name": "pending-spin",
+        "value": "spin 1s linear infinite",
+        "purpose": "Pending loader; keyframes rotate to 360deg."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation-duration: .01ms; animation-iteration-count: 1; transition-duration: .01ms; scroll-behavior: auto",
+        "purpose": "Applied to all elements and pseudo-elements under prefers-reduced-motion: reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide-auth",
+        "value": "1500px"
+      },
+      {
+        "name": "compact-desktop",
+        "value": "1100px"
+      },
+      {
+        "name": "stacked-auth",
+        "value": "860px"
+      },
+      {
+        "name": "mobile",
+        "value": "600px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Implemented primary action variant; standard size.",
+      "html": "<button class=\"ds-button-primary\" type=\"button\">L?u thay ??i</button>",
+      "css": ".ds-button-primary{font-family:\"Be Vietnam Pro\",sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:11px 20px;border:1px solid transparent;border-radius:8px;font-size:13px;font-weight:600;line-height:1.5;cursor:pointer;transition:background .18s,color .18s;background:var(--primary);color:#fff;}.ds-button-primary:hover:not(:disabled){background:var(--pine-deep);}.ds-button-primary:focus-visible{outline:3px solid var(--focus,#5a876b);outline-offset:4px;}.ds-button-primary:disabled{background:#e1e6dc;color:#60705f;border-color:transparent;cursor:not-allowed;}@media(prefers-reduced-motion:reduce){.ds-button-primary{transition-duration:.01ms;}}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Implemented secondary action variant; standard size.",
+      "html": "<button class=\"ds-button-secondary\" type=\"button\">L?u thay ??i</button>",
+      "css": ".ds-button-secondary{font-family:\"Be Vietnam Pro\",sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:11px 20px;border:1px solid transparent;border-radius:8px;font-size:13px;font-weight:600;line-height:1.5;cursor:pointer;transition:background .18s,color .18s;background:#fff;color:var(--pine);border-color:var(--border);}.ds-button-secondary:hover:not(:disabled){background:var(--secondary-hover,#eef3e8);}.ds-button-secondary:focus-visible{outline:3px solid var(--focus,#5a876b);outline-offset:4px;}.ds-button-secondary:disabled{background:#e1e6dc;color:#60705f;border-color:transparent;cursor:not-allowed;}@media(prefers-reduced-motion:reduce){.ds-button-secondary{transition-duration:.01ms;}}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Implemented ghost action variant; standard size.",
+      "html": "<button class=\"ds-button-ghost\" type=\"button\">L?u thay ??i</button>",
+      "css": ".ds-button-ghost{font-family:\"Be Vietnam Pro\",sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:11px 20px;border:1px solid transparent;border-radius:8px;font-size:13px;font-weight:600;line-height:1.5;cursor:pointer;transition:background .18s,color .18s;background:transparent;color:var(--ghost,#526259);}.ds-button-ghost:hover:not(:disabled){background:var(--ghost-hover,#e9eee4);color:var(--pine);}.ds-button-ghost:focus-visible{outline:3px solid var(--focus,#5a876b);outline-offset:4px;}.ds-button-ghost:disabled{background:#e1e6dc;color:#60705f;border-color:transparent;cursor:not-allowed;}@media(prefers-reduced-motion:reduce){.ds-button-ghost{transition-duration:.01ms;}}"
+    },
+    {
+      "name": "Danger Button",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Implemented danger action variant; standard size.",
+      "html": "<button class=\"ds-button-danger\" type=\"button\">X?a t?i kho?n</button>",
+      "css": ".ds-button-danger{font-family:\"Be Vietnam Pro\",sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:11px 20px;border:1px solid transparent;border-radius:8px;font-size:13px;font-weight:600;line-height:1.5;cursor:pointer;transition:background .18s,color .18s;background:var(--error);color:#fff;}.ds-button-danger:focus-visible{outline:3px solid var(--focus,#5a876b);outline-offset:4px;}.ds-button-danger:disabled{background:#e1e6dc;color:#60705f;border-color:transparent;cursor:not-allowed;}@media(prefers-reduced-motion:reduce){.ds-button-danger{transition-duration:.01ms;}}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Shared input and select styling with visible invalid and keyboard-focus states.",
+      "html": "<label class=\"ds-field\">T?n hi?n th?<input class=\"ds-input\" value=\"Nguy?n An\" autocomplete=\"name\" /></label>",
+      "css": ".ds-field{font-family:\"Be Vietnam Pro\",sans-serif;display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:600;color:#354c3e;}.ds-input{font-family:\"Be Vietnam Pro\",sans-serif;width:100%;height:49px;border:1px solid var(--input-border,#cfd8cb);background:#fff;border-radius:8px;padding:12px 14px;color:var(--foreground);font-size:13px;font-weight:400;line-height:1.5;caret-color:var(--primary);transition:border-color .15s;}.ds-input:hover{border-color:#879b85;}.ds-input::placeholder{color:#717b70;}.ds-input[aria-invalid=\"true\"]{border-color:var(--error);}.ds-input:focus-visible{border-color:var(--primary);outline:2px solid var(--input-focus,#a8c598);outline-offset:1px;}@media(prefers-reduced-motion:reduce){.ds-input{transition-duration:.01ms;}}"
+    },
+    {
+      "name": "Workspace Navigation",
+      "kind": "nav",
+      "refersTo": "navigation-active",
+      "description": "Pale navigation with selected location; vertical on desktop and horizontal on mobile.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"?i?u h??ng ch?nh\"><a class=\"ds-nav-link\" href=\"#workspace\">Kh?ng gian tuy?n d?ng</a><a class=\"ds-nav-link ds-nav-active\" href=\"#settings\" aria-current=\"page\">C?i ??t t?i kho?n</a></nav>",
+      "css": ".ds-nav{display:flex;flex-direction:column;gap:7px;background:var(--sidebar,#eef2e9);padding:18px;}.ds-nav-link{font-family:\"Be Vietnam Pro\",sans-serif;display:flex;align-items:center;gap:11px;padding:12px 13px;color:#576650;border-radius:8px;font-size:12px;font-weight:500;text-decoration:none;}.ds-nav-link:hover{background:#e0e8d7;}.ds-nav-active{background:var(--nav-active,#dce9cc);color:#29492e;}.ds-nav-link:focus-visible{outline:3px solid var(--focus,#5a876b);outline-offset:4px;}@media(max-width:600px){.ds-nav{flex-direction:row;padding:8px 14px;gap:5px;}.ds-nav-link{flex:1;justify-content:center;font-size:10px;padding:10px 7px;}}"
+    },
+    {
+      "name": "Account Badge",
+      "kind": "chip",
+      "refersTo": "account-badge",
+      "description": "Noninteractive account identity label shown on wide settings pages.",
+      "html": "<span class=\"ds-account-badge\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z\"/><path d=\"m9 12 2 2 4-4\"/></svg>T?i kho?n c? nh?n</span>",
+      "css": ".ds-account-badge{font-family:\"Be Vietnam Pro\",sans-serif;display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border:1px solid #d4dfc9;border-radius:6px;font-size:10px;color:#516646;white-space:nowrap;}@media(max-width:860px){.ds-account-badge{display:none;}}"
+    },
+    {
+      "name": "Empty Workspace",
+      "kind": "card",
+      "refersTo": "empty-state",
+      "description": "Flat dashed container for genuine account empty states.",
+      "html": "<section class=\"ds-empty\"><div class=\"ds-empty-icon\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><rect x=\"3\" y=\"7\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16\"/></svg></div><h2>Ch?a c? n?i dung</h2><p>Kh?ng gian c?a b?n s? hi?n th? n?i dung khi c? d? li?u.</p></section>",
+      "css": ".ds-empty{font-family:\"Be Vietnam Pro\",sans-serif;min-height:430px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px dashed #c9d6bf;border-radius:12px;padding:40px 22px;color:var(--foreground);}.ds-empty-icon{display:grid;place-items:center;width:70px;height:70px;border-radius:50%;background:#eaf0e3;color:#617b53;margin-bottom:25px;}.ds-empty h2{margin:0;font-size:21px;line-height:1.35;letter-spacing:-.025em;}.ds-empty p{font-size:12px;color:var(--muted);max-width:410px;margin:14px 0 0;line-height:1.9;}@media(max-width:600px){.ds-empty{min-height:400px;}.ds-empty h2{font-size:19px;}}"
+    },
+    {
+      "name": "Mode Switch",
+      "kind": "custom",
+      "refersTo": "mode-switch",
+      "description": "Two equal account modes with an explicit pressed state.",
+      "html": "<div class=\"ds-mode\" role=\"group\" aria-label=\"Ch? ?? s? d?ng\"><button type=\"button\" aria-pressed=\"true\">?ng vi?n</button><button type=\"button\" aria-pressed=\"false\">Tuy?n d?ng</button></div>",
+      "css": ".ds-mode{display:flex;gap:3px;padding:4px;border:1px solid #dce4d5;border-radius:8px;background:#f4f7f0;}.ds-mode button{font-family:\"Be Vietnam Pro\",sans-serif;display:flex;align-items:center;justify-content:center;gap:6px;border:0;padding:7px 11px;color:#627156;border-radius:5px;font-size:11px;font-weight:500;background:transparent;min-height:33px;cursor:pointer;}.ds-mode button[aria-pressed=\"true\"]{background:var(--pine);color:#fff;}.ds-mode button:not([aria-pressed=\"true\"]):hover{background:#e2ebd7;}.ds-mode button:focus-visible{outline:3px solid var(--focus,#5a876b);outline-offset:4px;}@media(max-width:600px){.ds-mode{width:100%;}.ds-mode button{flex:1;min-height:44px;}}"
+    },
+    {
+      "name": "Shared-account Diagram",
+      "kind": "custom",
+      "refersTo": "identity-node",
+      "description": "The account-first signature: one identity connects to two equal role branches.",
+      "html": "<div class=\"ds-identity\"><div class=\"ds-identity-node\"><svg width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"8\" r=\"5\"/><path d=\"M20 21a8 8 0 0 0-16 0\"/></svg><span>T?i kho?n c?a b?n</span><span class=\"ds-identity-dot\"></span></div><div class=\"ds-identity-connector\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M12 5v14m-7-7 7 7 7-7\"/></svg></div><div class=\"ds-identity-roles\"><div><span>Nh? tuy?n d?ng</span><small>T?m ??ng ng??i</small></div><div><span>?ng vi?n</span><small>Ch?n ??ng c? h?i</small></div></div></div>",
+      "css": ".ds-identity{font-family:\"Be Vietnam Pro\",sans-serif;width:100%;max-width:350px;background:var(--pine);padding:24px;color:#fff;}.ds-identity-node{display:flex;gap:12px;align-items:center;padding:13px 18px;border:1px solid #517365;border-radius:9px;font-size:12px;color:#eaf0e5;}.ds-identity-dot{width:7px;height:7px;border-radius:50%;background:var(--lime);margin-left:auto;}.ds-identity-connector{display:flex;justify-content:center;align-items:center;height:40px;color:#adc694;}.ds-identity-roles{display:grid;grid-template-columns:1fr 1fr;gap:14px;}.ds-identity-roles>div{border-top:1px solid #56785c;display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:21px 0 0;color:var(--lime);}.ds-identity-roles span{font-size:12px;color:#fff;font-weight:500;}.ds-identity-roles small{font-size:10px;font-weight:400;color:#c1d4c4;margin-top:-5px;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Shared Professional Workspace",
+    "overview": "LocCV uses a calm, approachable professional workspace to connect one identity with two modes. Forest-green framing, pale green navigation and a warm neutral ground establish continuity across authentication and account settings. This records the implemented direction; it is not a separately approved brand identity.\n\nThe interface gives Vietnamese forms deliberate whitespace and compact supporting text. Its signature is the shared-account diagram: one identity node connects to two equal role branches. Functional controls and honest account states remain the center of the experience.",
+    "keyCharacteristics": [
+      "Forest-green anchors with pale green supporting surfaces.",
+      "Self-hosted Vietnamese typography and restrained weight contrast.",
+      "Flat sections, thin separators and softly rounded controls.",
+      "One visual identity across candidate and recruiter modes."
+    ],
+    "rules": [
+      {
+        "name": "The Shared Identity Rule",
+        "body": "Keep the same green palette when the account changes mode; selection communicates context without assigning a new brand to each role.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Family Rule",
+        "body": "Use Be Vietnam Pro for headings, forms and navigation; distinguish hierarchy through size, spacing and weight.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Surface Rule",
+        "body": "Preserve tonal layering and thin separators when extending the current workspace.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep account identity and the green visual language consistent across both modes.",
+      "**Do** use self-hosted Be Vietnam Pro with the Vietnamese subset.",
+      "**Do** pair error and success colors with clear text and preserve visible keyboard focus.",
+      "**Do** use responsive stacked settings sections and the mobile horizontal navigation pattern."
+    ],
+    "donts": [
+      "**Don't** replace flat settings sections with shadowed cards.",
+      "**Don't** communicate current mode, validation or account status through color alone.",
+      "**Don't** allow a desktop sidebar or two-column auth composition to force horizontal scrolling on mobile.",
+      "**Don't** add photographic decoration to the existing account-form patterns."
+    ]
+  }
+}

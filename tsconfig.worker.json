@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target":"ES2022","lib":["ES2022","DOM"],"module":"NodeNext","moduleResolution":"NodeNext",
+    "strict":true,"skipLibCheck":true,"esModuleInterop":true,"outDir":"dist","rootDir":".","types":["node"],
+    "allowImportingTsExtensions":true,"rewriteRelativeImportExtensions":true
+  },
+  "include":["worker/**/*.ts","src/lib/ai-client.ts","src/lib/ai-schemas.ts","src/lib/env.ts","src/lib/errors.ts","src/lib/db.types.ts"]
+}

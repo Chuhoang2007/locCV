@@ -1,0 +1,36 @@
+{
+  "jd": {
+    "title": "Frontend Developer — React & TypeScript",
+    "summary": "Phát triển trải nghiệm web rõ ràng, dễ sử dụng cùng đội ngũ sản phẩm. Tin và dữ liệu trong bộ kiểm thử này là giả lập.",
+    "responsibilities": ["Xây dựng giao diện bằng React và TypeScript.", "Phối hợp cùng thiết kế, kiểm thử và cải thiện khả năng truy cập."],
+    "requirements": ["Có dự án sử dụng TypeScript.", "Hiểu kiểm thử và xử lý dữ liệu từ API."],
+    "benefits": ["Trao đổi cụ thể khi phỏng vấn."],
+    "skills": ["React", "TypeScript", "Kiểm thử"],
+    "location": "Hà Nội",
+    "salary_min": 20000000,
+    "salary_max": 30000000,
+    "salary_currency": "VND",
+    "salary_period": "MONTH"
+  },
+  "scoring_rubric": {
+    "schema_version": 1,
+    "pass_threshold": 60,
+    "criteria": [
+      {"id":"typescript","label":"Kinh nghiệm TypeScript","max_points":60,"scoring_guidance":"0: chưa có bằng chứng; 30: có dự án; 60: mô tả dự án và trách nhiệm cụ thể."},
+      {"id":"testing","label":"Kiểm thử phần mềm","max_points":40,"scoring_guidance":"0: chưa có bằng chứng; 20: có sử dụng công cụ; 40: mô tả test đã viết và phạm vi."}
+    ]
+  },
+  "interview_questions": {
+    "schema_version": 1,
+    "duration_minutes": 30,
+    "quiz_weight": 40,
+    "essay_weight": 60,
+    "quiz": [
+      {"id":"q_typescript","prompt":"TypeScript kiểm tra kiểu chủ yếu khi nào?","options":[{"id":"a","text":"Khi kiểm tra hoặc biên dịch mã"},{"id":"b","text":"Tự kiểm tra mọi response lúc runtime"}],"correct_answer":"a","max_points":10},
+      {"id":"q_test","prompt":"Test hồi quy giúp kiểm tra điều gì?","options":[{"id":"a","text":"Thay đổi mới không làm hỏng hành vi cần giữ"},{"id":"b","text":"Mọi thay đổi đều tăng hiệu năng"}],"correct_answer":"a","max_points":10}
+    ],
+    "essay": [
+      {"id":"e_api","prompt":"Bạn xử lý dữ liệu JSON từ một API bên ngoài như thế nào?","max_points":10,"rubric":[{"id":"validation","description":"Kiểm tra dữ liệu runtime","max_points":6,"scoring_guidance":"0: không kiểm tra; 3: kiểm tra vài field; 6: dùng schema trước xử lý."},{"id":"errors","description":"Xử lý lỗi an toàn","max_points":4,"scoring_guidance":"0: bỏ qua; 2: có bắt lỗi; 4: bắt lỗi và không lộ dữ liệu riêng."}]}
+    ]
+  }
+}

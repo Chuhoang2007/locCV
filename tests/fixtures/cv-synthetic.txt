@@ -1,0 +1,1 @@
+SYNTHETIC CV - not a real person. Developed TypeScript and React applications. Wrote unit tests, integration tests and accessible user interfaces. Worked with SQL transactions and reviewed code with a product team. Documented deployment and operational procedures.
