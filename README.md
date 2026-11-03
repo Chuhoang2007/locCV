@@ -4,6 +4,10 @@ Cập nhật 03/11/2026: đã bổ sung thanh loading khi chuyển trang, khung 
 
 Nền tảng tuyển dụng theo bộ thiết kế trong `docs/`. Đã có tài khoản, tin tuyển dụng, tiếp nhận/chấm CV, bài thi/autosave/timer server, kết quả 40/60, quyết định cuối của HR và Inbox riêng người nhận. Phase 5 bổ sung quản lý dữ liệu, health/monitoring, container và CI. Mã nguồn local hoàn chỉnh; trạng thái môi trường thật được ghi riêng.
 
+## GitHub và triển khai website
+
+Xem kết quả build trong **Actions → Application checks**. Không chọn **Settings → Pages → Next.js → Configure**: mẫu này thêm lại workflow `nextjs.yml` dành cho website tĩnh, tự tạo cấu hình gây lỗi ES Module và không chạy được API/worker của ứng dụng. Push mã lên GitHub chưa tạo website có thể sử dụng trên Internet; cần triển khai web Node.js và worker theo [hướng dẫn vận hành](docs/OPERATIONS.md#github-actions-và-github-pages).
+
 ## Bắt đầu Phase 5 khi đã có Phase 4
 
 1. Trong **Supabase → SQL Editor**, chạy toàn bộ migration mới [0006_decisions_inbox_and_retention.sql](supabase/migrations/0006_decisions_inbox_and_retention.sql). Không chạy lại migration cũ, seed hoặc reset database đang dùng.
