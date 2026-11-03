@@ -28,6 +28,14 @@ npm run worker
 
 Web mặc định `127.0.0.1:3000`; worker health `127.0.0.1:3310`. Mỗi worker có hai consumer và sweep deadline 15 giây. Khi dừng bằng Ctrl+C/SIGTERM, worker ngừng nhận thêm việc, hủy HTTP và để lease phục hồi. Không reset task/budget để sửa lỗi mạng.
 
+## GitHub Actions và GitHub Pages
+
+Repository dùng `.github/workflows/ci.yml` để kiểm tra và build ứng dụng trên Node 24. Workflow chạy khi push, tạo pull request hoặc chọn **Actions → Application checks → Run workflow**. Build này kiểm tra mã nguồn; chưa xuất bản ứng dụng lên Internet.
+
+Không thêm workflow mẫu **Deploy Next.js site to Pages** cho ứng dụng này. Bước `actions/configure-pages` với `static_site_generator: next` tự chỉnh cấu hình cho website tĩnh; nó có thể tạo `next.config.js` dạng CommonJS và gây lỗi khi `package.json` có `"type": "module"`. Cấu hình của repository là `next.config.ts` với `export default`, đã đúng định dạng. Giữ nguyên `"type": "module"` và không thêm cấu hình `output: "export"`.
+
+GitHub Pages phục vụ file tĩnh, không chạy API, phiên đăng nhập và worker của LocCV. Để người khác dùng đầy đủ ứng dụng, triển khai web Node.js và worker theo cấu hình container bên dưới; dùng GitHub để lưu mã nguồn và chạy kiểm tra. Workflow Pages được loại bỏ để không tiếp tục sửa cấu hình hoặc xuất thư mục `out/` không phù hợp.
+
 ## Container
 
 Hai image dùng Node 24, user không phải root, dependency được khóa bằng package-lock. Web build chỉ nhận hai biến public; secret được inject lúc chạy. `.dockerignore` loại mọi `.env.local`, ảnh QA và dữ liệu test khỏi build context.

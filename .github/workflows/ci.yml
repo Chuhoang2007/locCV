@@ -1,7 +1,9 @@
+# LocCV needs a Node.js web server and worker; GitHub Pages cannot host them.
 name: Application checks
 on:
   push:
   pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
