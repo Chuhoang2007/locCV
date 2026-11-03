@@ -6,6 +6,8 @@ Nền tảng tuyển dụng theo bộ thiết kế trong `docs/`. Đã có tài 
 
 ## GitHub và triển khai website
 
+Website đã ở Vercel và bạn muốn AI chạy khi tắt máy: dùng [hướng dẫn triển khai worker lên Render](docs/RENDER_WORKER.md). File `render.yaml` đã cấu hình một Background Worker Docker; nhập các biến môi trường trong Render và kiểm tra mức phí trước khi triển khai.
+
 Xem kết quả build trong **Actions → Application checks**. Không chọn **Settings → Pages → Next.js → Configure**: mẫu này thêm lại workflow `nextjs.yml` dành cho website tĩnh, tự tạo cấu hình gây lỗi ES Module và không chạy được API/worker của ứng dụng. Push mã lên GitHub chưa tạo website có thể sử dụng trên Internet; cần triển khai web Node.js và worker theo [hướng dẫn vận hành](docs/OPERATIONS.md#github-actions-và-github-pages).
 
 ## Bắt đầu Phase 5 khi đã có Phase 4

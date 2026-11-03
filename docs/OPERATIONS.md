@@ -38,6 +38,8 @@ GitHub Pages phục vụ file tĩnh, không chạy API, phiên đăng nhập và
 
 ## Container
 
+Nếu giữ website trên Vercel và chỉ đưa worker lên Render, dùng [hướng dẫn Render worker](RENDER_WORKER.md) và `render.yaml` ở root. Dockerfile hiện tại đã tự build/khởi động worker; không cần chạy worker trên máy cá nhân sau khi worker Render đã được kiểm chứng hoạt động.
+
 Hai image dùng Node 24, user không phải root, dependency được khóa bằng package-lock. Web build chỉ nhận hai biến public; secret được inject lúc chạy. `.dockerignore` loại mọi `.env.local`, ảnh QA và dữ liệu test khỏi build context.
 
 ```powershell

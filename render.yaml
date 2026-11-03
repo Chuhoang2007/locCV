@@ -1,0 +1,29 @@
+# Render runs only the AI worker. The Next.js website can stay on Vercel.
+# This is a paid Background Worker; review the cost in Render before deploying.
+# Enter credentials in Render when prompted, never in this file.
+services:
+  - type: worker
+    name: loccv-worker
+    runtime: docker
+    plan: 0.5c-512mb
+    region: singapore
+    branch: main
+    numInstances: 1
+    dockerfilePath: ./Dockerfile.worker
+    dockerContext: .
+    autoDeployTrigger: checksPass
+    envVars:
+      - key: NEXT_PUBLIC_SUPABASE_URL
+        sync: false
+      - key: NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+        sync: false
+      - key: SUPABASE_SECRET_KEY
+        sync: false
+      - key: NINE_ROUTER_BASE_URL
+        sync: false
+      - key: NINE_ROUTER_API_KEY
+        sync: false
+      - key: NINE_ROUTER_MODEL
+        sync: false
+      - key: DATA_RETENTION_ENABLED
+        value: "false"
