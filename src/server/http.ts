@@ -4,7 +4,21 @@ import { getSiteOrigin } from "@/lib/env";
 import { AppError } from "@/lib/errors";
 
 export function assertSameOrigin(request: Request) {
-  if (request.headers.get("origin") !== getSiteOrigin()) throw new AppError("INVALID_ORIGIN", 403, "Yêu cầu không hợp lệ. Hãy tải lại trang rồi thử lại.");
+  const origin=request.headers.get("origin");
+  const configured=new URL(getSiteOrigin());
+  const destination=new URL(request.url);
+  const loopback=(hostname:string)=>hostname==="127.0.0.1"||hostname==="localhost";
+  // Next dev may select another port when the default is occupied. In local
+  // development, use the actual destination port; production previews retain
+  // the configured port. Never add trusted origins from forwarded headers.
+  const localConfiguration=configured.protocol==="http:"&&loopback(configured.hostname);
+  const localDevelopment=localConfiguration&&process.env.NODE_ENV==="development";
+  const localPort=localDevelopment?destination.port:configured.port;
+  const localAlias=localConfiguration&&
+    destination.protocol===configured.protocol&&destination.port===localPort&&loopback(destination.hostname)&&
+    ["127.0.0.1","localhost"].some(hostname=>origin===new URL(`http://${hostname}${localPort?":"+localPort:""}`).origin);
+  const configuredOrigin=origin===configured.origin&&!localDevelopment;
+  if (!configuredOrigin&&!localAlias) throw new AppError("INVALID_ORIGIN", 403, "Yêu cầu không hợp lệ. Hãy tải lại trang rồi thử lại.");
   const fetchSite = request.headers.get("sec-fetch-site");
   if (fetchSite === "cross-site") throw new AppError("INVALID_ORIGIN", 403, "Yêu cầu không hợp lệ.");
 }

@@ -1,6 +1,6 @@
 import { ApplicationSummary } from "@/components/application-summary";
 import { BriefcaseBusiness, Plus, ArrowUpRight } from "lucide-react";
-import Link from "next/link";
+import Link from "@/components/loading-link";
 import { requireViewer } from "@/server/auth";
 import { Button } from "@/components/ui/button";
 import { listHRJobs } from "@/server/dal/jobs";

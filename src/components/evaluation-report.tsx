@@ -1,7 +1,7 @@
 "use client";
 import { useEffect,useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import Link from "@/components/loading-link";
+import { useFeedbackRouter as useRouter } from "@/hooks/use-feedback-router";
 import { ArrowLeft,ArrowRight,CheckCircle2,Clock3,Download,Info,LoaderCircle } from "lucide-react";
 import { applicationStatusLabel,type ApplicationDetail } from "@/domain/applications";
 import { isTaskActive } from "@/domain/task";
@@ -11,18 +11,18 @@ import { Button } from "./ui/button";
 import { HRDecision } from "./hr-decision";
 import { InterviewResult } from "./interview-result";
 export function EvaluationReport({initial,timeZone}:{initial:ApplicationDetail;timeZone:string}){
-  const router=useRouter();const {task,setTask,error:pollError}=useTask(initial.task);const [busy,setBusy]=useState(false);const [error,setError]=useState("");
+  const router=useRouter();const {task,setTask,error:pollError}=useTask(initial.task);const [busy,setBusy]=useState<"RETRY"|"DOWNLOAD"|null>(null);const [error,setError]=useState("");
   const hr=initial.audience==="HR";
   useEffect(()=>{if(task?.state==="SUCCEEDED"&&initial.cv_score===null)router.refresh();},[task?.state,initial.cv_score,router]);
   async function retry(){
-    if(!task)return;setBusy(true);setError("");
+    if(!task)return;setBusy("RETRY");setError("");
     try{await clientJSON(`/api/tasks/${task.id}/retry`,"POST",{}, {"Idempotency-Key":crypto.randomUUID()});const next=await clientJSON<ApplicationDetail>(`/api/${hr?"hr/":""}applications/${initial.id}`,"GET");setTask(next.task);router.refresh();}
-    catch(error){setError(error instanceof Error?error.message:"Chưa thể thử lại.");}finally{setBusy(false);}
+    catch(error){setError(error instanceof Error?error.message:"Chưa thể thử lại.");}finally{setBusy(null);}
   }
   async function download(){
-    setBusy(true);setError("");
+    setBusy("DOWNLOAD");setError("");
     try{const result=await clientJSON<{url:string}>("/api/cv/download-link","POST",{application_id:initial.id});window.location.assign(result.url);}
-    catch(error){setError(error instanceof Error?error.message:"Chưa tải được file.");}finally{setBusy(false);}
+    catch(error){setError(error instanceof Error?error.message:"Chưa tải được file.");}finally{setBusy(null);}
   }
   return <div className="application-detail"><Link href={hr?`/hr/jobs/${initial.job_id}`:"/candidate/applications"} className="text-link editor-back"><ArrowLeft size={16} aria-hidden="true"/>{hr?"Về tin tuyển dụng":"Hồ sơ ứng tuyển"}</Link>
     <header className="page-heading"><span className={`status-badge ${initial.status==="CV_PASSED"?"status-published":""}`}>{initial.interview_submitted_at&&initial.interview_score===null?"Đang chấm bài":applicationStatusLabel[initial.status]}</span><h1>{hr?initial.candidate_name:initial.job_title}</h1><p>{hr?initial.job_title:"Theo dõi kết quả CV và bước tiếp theo của bạn."}</p></header>
@@ -33,7 +33,7 @@ export function EvaluationReport({initial,timeZone}:{initial:ApplicationDetail;t
         {isTaskActive(task.state)&&task.attempt>0&&<p className="task-attempt">Lần kết nối {task.attempt}/3</p>}
         {task.state==="FAILED"&&!task.can_retry&&<p>Đã dùng hai lượt thử lại trong 24 giờ hoặc tác vụ này không còn có thể thử lại. Hãy quay lại sau.</p>}
         {pollError&&<p className="field-error">{pollError}</p>}
-      </div>{task.can_retry&&<Button type="button" variant="secondary" disabled={busy} onClick={retry}>Thử chấm lại CV</Button>}
+      </div>{task.can_retry&&<Button type="button" variant="secondary" disabled={!!busy} loading={busy==="RETRY"} onClick={retry}>Thử chấm lại CV</Button>}
     </section>}
     {error&&<p className="notice notice-error" role="alert">{error}</p>}
     <HRDecision application={initial} timeZone={timeZone}/>
@@ -49,6 +49,6 @@ export function EvaluationReport({initial,timeZone}:{initial:ApplicationDetail;t
       {c.evidence.length>0&&<><h4>Bằng chứng trong CV</h4>{c.evidence.map((quote,i)=><blockquote key={i}>{quote}</blockquote>)}</>}
       {c.missing_evidence.length>0&&<><h4>Cần xác minh thêm</h4><ul>{c.missing_evidence.map((note,i)=><li key={i}>{note}</li>)}</ul></>}
     </article>)}</section>}
-    <section className="cv-submitted-section"><div className="cv-criterion-heading"><h2>Nội dung CV đã gửi</h2>{initial.has_file&&<Button variant="secondary" size="small" disabled={busy} onClick={download}><Download size={16} aria-hidden="true"/>Tải file CV</Button>}</div><p className="field-hint">Nguồn: {initial.cv_source==="TEXT"?"Văn bản":initial.cv_source}. Nội dung được giữ nguyên từ lúc tiếp nhận.</p><details className="assessment-details"><summary>Xem văn bản CV</summary><pre className="cv-submitted-text">{initial.cv_text}</pre></details></section>
+    <section className="cv-submitted-section"><div className="cv-criterion-heading"><h2>Nội dung CV đã gửi</h2>{initial.has_file&&<Button variant="secondary" size="small" disabled={!!busy} loading={busy==="DOWNLOAD"} onClick={download}><Download size={16} aria-hidden="true"/>Tải file CV</Button>}</div><p className="field-hint">Nguồn: {initial.cv_source==="TEXT"?"Văn bản":initial.cv_source}. Nội dung được giữ nguyên từ lúc tiếp nhận.</p><details className="assessment-details"><summary>Xem văn bản CV</summary><pre className="cv-submitted-text">{initial.cv_text}</pre></details></section>
   </div>;
 }

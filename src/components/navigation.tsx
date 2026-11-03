@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import Link from "@/components/loading-link";
 import { usePathname } from "next/navigation";
 import { BriefcaseBusiness, FileUser, Settings2, ArrowUpRight,Search,Mail } from "lucide-react";
 import type { ViewerDTO } from "@/domain/dto";

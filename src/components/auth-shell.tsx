@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/loading-link";
 import { ArrowDown, ArrowUpRight, BriefcaseBusiness, UserRound, ShieldCheck } from "lucide-react";
 import { Brand } from "./brand";
 

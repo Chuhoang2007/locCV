@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/loading-link";
 import { ArrowUpRight,MapPin,Search } from "lucide-react";
 import { listPublicJobs } from "@/server/dal/jobs";
 import { AppError } from "@/lib/errors";

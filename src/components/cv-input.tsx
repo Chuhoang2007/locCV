@@ -1,13 +1,15 @@
 "use client";
 import { useRef,useState } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { useFeedbackRouter as useRouter } from "@/hooks/use-feedback-router";
+import Link from "@/components/loading-link";
 import { ArrowRight,FileUp,LoaderCircle } from "lucide-react";
 import { applySchema } from "@/domain/applications";
 import { clientJSON } from "@/lib/client-api";
 import { Button } from "./ui/button";
+import { useHydrated } from "@/hooks/use-hydrated";
 type Extracted={upload_id:string;source:"PDF"|"DOCX";text:string};
 export function CVInput({jobId}:{jobId:string}){
+  const hydrated=useHydrated();
   const router=useRouter();const [mode,setMode]=useState<"FILE"|"TEXT">("FILE");
   const [text,setText]=useState("");const [file,setFile]=useState<Extracted|null>(null);const [filename,setFilename]=useState("");
   const [busy,setBusy]=useState<"UPLOAD"|"SUBMIT"|null>(null);const [error,setError]=useState("");const [reviewed,setReviewed]=useState(false);
@@ -45,7 +47,7 @@ export function CVInput({jobId}:{jobId:string}){
       <label><input type="radio" name="cv-method" checked={mode==="TEXT"} onChange={()=>changeMode("TEXT")}/>Dán văn bản</label>
     </fieldset>
     {mode==="FILE"&&<div className="cv-file-field"><label htmlFor="cv-file"><FileUp size={21} aria-hidden="true"/>Chọn file CV</label>
-      <input id="cv-file" type="file" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" disabled={!!busy} aria-describedby="cv-file-help" onChange={event=>{const selected=event.target.files?.[0];if(selected)void readFile(selected);}}/>
+      <input id="cv-file" type="file" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" disabled={!hydrated||!!busy} aria-describedby="cv-file-help" onChange={event=>{const selected=event.target.files?.[0];if(selected)void readFile(selected);}}/>
       <p id="cv-file-help" className="field-hint">Tối đa 5 MiB, PDF 20 trang. PDF scan và file có mật khẩu chưa được hỗ trợ.</p>
       {filename&&<p className="cv-filename">{filename}</p>}
       {busy==="UPLOAD"&&<p role="status" className="cv-working"><LoaderCircle className="spin" size={17} aria-hidden="true"/>Đang tải và trích xuất văn bản…</p>}

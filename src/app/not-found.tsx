@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/loading-link";
 import { Brand } from "@/components/brand";
 import { Button } from "@/components/ui/button";
 export default function NotFound() {

@@ -20,6 +20,8 @@ Tạo và quản lý quy trình tuyển dụng có AI hỗ trợ, có HR duyệt
 
 ## Operating Context
 
+Chuyển trang và thao tác xử lý có phản hồi loading theo trạng thái thật, khung nội dung chờ, chặn bấm lặp và hỗ trợ giảm chuyển động; hiệu ứng không thêm thời gian chờ giả.
+
 Giao diện tiếng Việt, dùng trên desktop và điện thoại. Người dùng đăng ký, xác nhận email, đăng nhập, khôi phục mật khẩu, chỉnh hồ sơ và chuyển chế độ. Dữ liệu thời gian UTC, hiển thị theo múi giờ người dùng.
 
 ## Capabilities and Constraints

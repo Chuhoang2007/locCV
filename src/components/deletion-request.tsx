@@ -12,10 +12,10 @@ export function DeletionRequest({initial,retentionEnabled,timeZone}:{initial:Del
       {!retentionEnabled&&<p className="notice">Tự động xóa dữ liệu hiện chưa được kích hoạt. Yêu cầu của bạn vẫn được ghi nhận để đơn vị vận hành xử lý.</p>}
       {status.requested_at?<>
         <h3>Đã tiếp nhận yêu cầu xóa</h3><p role="status">Thời hạn hủy yêu cầu: {new Date(status.scheduled_at!).toLocaleString("vi-VN",{timeZone})}. {retentionEnabled?"Dữ liệu sẽ được đưa vào quy trình xóa sau thời điểm này.":"Yêu cầu sẽ chờ đơn vị vận hành xử lý sau thời điểm này."}</p>
-        <p>Tin đang tuyển đã đóng. Hủy yêu cầu không mở lại tin.</p><Button variant="secondary" disabled={busy} onClick={()=>submit(false)}>{busy?"Đang xử lý…":"Hủy yêu cầu xóa"}</Button>
+        <p>Tin đang tuyển đã đóng. Hủy yêu cầu không mở lại tin.</p><Button variant="secondary" disabled={busy} loading={busy} onClick={()=>submit(false)}>{busy?"Đang xử lý…":"Hủy yêu cầu xóa"}</Button>
       </>:confirm?<>
         <h3>Xác nhận yêu cầu xóa dữ liệu?</h3><p>Tin đang tuyển sẽ đóng ngay. Bạn có 7 ngày để hủy. Phạm vi xóa gồm tài khoản, CV, bài làm, kết quả và các hồ sơ thuộc tin của bạn.</p>
-        <p>Bản sao lưu có lịch lưu giữ riêng do đơn vị vận hành công bố.</p><div className="action-row"><Button disabled={busy} onClick={()=>submit(true)}>{busy?"Đang gửi…":"Xác nhận yêu cầu xóa"}</Button><Button variant="secondary" disabled={busy} onClick={()=>setConfirm(false)}>Giữ tài khoản</Button></div>
+        <p>Bản sao lưu có lịch lưu giữ riêng do đơn vị vận hành công bố.</p><div className="action-row"><Button disabled={busy} loading={busy} onClick={()=>submit(true)}>{busy?"Đang gửi…":"Xác nhận yêu cầu xóa"}</Button><Button variant="secondary" disabled={busy} onClick={()=>setConfirm(false)}>Giữ tài khoản</Button></div>
       </>:<><h3>Yêu cầu xóa tài khoản</h3><p>Xem phạm vi xóa và thời gian chờ trước khi gửi yêu cầu.</p><Button variant="secondary" onClick={()=>setConfirm(true)}>Yêu cầu xóa dữ liệu</Button></>}
       {error&&<p role="alert" className="notice notice-error">{error}</p>}
     </div>

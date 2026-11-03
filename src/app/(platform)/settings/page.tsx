@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/loading-link";
 import { ArrowUpRight, LockKeyhole, ShieldCheck, UserRound } from "lucide-react";
 import { requireViewer } from "@/server/auth";
 import { deletionStatus } from "@/server/dal/messages";

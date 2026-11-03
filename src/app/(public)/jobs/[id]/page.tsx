@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/loading-link";
 import { notFound } from "next/navigation";
 import { ArrowLeft,Clock3,MapPin,ShieldCheck } from "lucide-react";
 import { AppError } from "@/lib/errors";

@@ -25,7 +25,7 @@ test("DOCX → confirm → CV threshold → HR evidence, private file and unauth
   for(const mode of ["HR","CANDIDATE"]){await page.request.patch("/api/me",{headers:{Origin:origin},data:{preferred_mode:mode}});expect((await page.request.post(`/api/jobs/${job}/applications`,{headers:headers(),data:{cv_source:"TEXT",upload_id:null,cv_text:syntheticCV,ai_processing_acknowledged:true}})).status()).toBe(403);}
   const candidate=await browser.newContext({baseURL:origin});const cvPage=await candidate.newPage();await login(cvPage,"candidate-b@example.test");await cvPage.goto(`/jobs/${job}/apply`);
   const extractionRequest=cvPage.waitForRequest(request=>request.url().endsWith("/api/cv/extract")).then(request=>request.postDataJSON());
-  await cvPage.getByLabel("Chọn file CV",{exact:true}).setInputFiles("tests/fixtures/cv-valid.docx");const uploaded=await extractionRequest;
+  await expect(cvPage.getByLabel("Chọn file CV",{exact:true})).toBeEnabled();await cvPage.getByLabel("Chọn file CV",{exact:true}).setInputFiles("tests/fixtures/cv-valid.docx");const uploaded=await extractionRequest;
   await expect(cvPage.getByLabel("Kiểm tra nội dung đã trích xuất")).toHaveValue(syntheticCV);
   await cvPage.getByRole("button",{name:"Gửi hồ sơ ứng tuyển",exact:true}).click();await expect(cvPage).toHaveURL(new RegExp(`/jobs/${job}/apply$`));
   await confirm(cvPage);await capture(cvPage,"apply");
@@ -52,7 +52,7 @@ test("DOCX → confirm → CV threshold → HR evidence, private file and unauth
 });
 test("PDF extraction errors recover to text; AI failure remains ungraded and manual retry survives reload",async({page,browser})=>{
   await login(page,"hr-a@example.test");const job=await publish(page,"ALWAYS");const candidate=await browser.newContext({baseURL:origin});const cvPage=await candidate.newPage();await login(cvPage,"candidate-b@example.test");await cvPage.goto(`/jobs/${job}/apply`);
-  await cvPage.getByLabel("Chọn file CV",{exact:true}).setInputFiles("tests/fixtures/cv-scan.pdf");await expect(cvPage.getByRole("alert").filter({hasText:"PDF scan"})).toBeVisible();await capture(cvPage,"file-error");
+  await expect(cvPage.getByLabel("Chọn file CV",{exact:true})).toBeEnabled();await cvPage.getByLabel("Chọn file CV",{exact:true}).setInputFiles("tests/fixtures/cv-scan.pdf");await expect(cvPage.getByRole("alert").filter({hasText:"PDF scan"})).toBeVisible();await capture(cvPage,"file-error");
   await cvPage.getByRole("button",{name:"Dán CV thay thế"}).click();await cvPage.getByLabel("Nội dung CV",{exact:true}).fill(`${syntheticCV} E2E_FAIL_ONCE E2E_LOW_SCORE ${crypto.randomUUID()}`);await confirm(cvPage);
   await cvPage.getByRole("button",{name:"Gửi hồ sơ ứng tuyển",exact:true}).click();await expect(cvPage.getByRole("heading",{name:"Chưa thể hoàn tất đánh giá CV",exact:true})).toBeVisible({timeout:20000});
   const id=cvPage.url().split("/").at(-1)!;let app=await (await cvPage.request.get(`/api/applications/${id}`)).json();expect(app.cv_score).toBeNull();expect(app.status).toBe("CV_SUBMITTED");expect(app.eligibility.eligible).toBe(false);await capture(cvPage,"ai-error");
@@ -61,7 +61,7 @@ test("PDF extraction errors recover to text; AI failure remains ungraded and man
 });
 test("valid PDF and below-threshold CV stay locked under CV_THRESHOLD",async({page,browser})=>{
   await login(page,"hr-a@example.test");const job=await publish(page);const candidate=await browser.newContext({baseURL:origin});const cvPage=await candidate.newPage();await login(cvPage,"candidate-b@example.test");await cvPage.goto(`/jobs/${job}/apply`);
-  await cvPage.getByLabel("Chọn file CV",{exact:true}).setInputFiles("tests/fixtures/cv-valid.pdf");await expect(cvPage.getByLabel("Kiểm tra nội dung đã trích xuất")).toHaveValue(/Developed TypeScript/);
+  await expect(cvPage.getByLabel("Chọn file CV",{exact:true})).toBeEnabled();await cvPage.getByLabel("Chọn file CV",{exact:true}).setInputFiles("tests/fixtures/cv-valid.pdf");await expect(cvPage.getByLabel("Kiểm tra nội dung đã trích xuất")).toHaveValue(/Developed TypeScript/);
   await cvPage.getByLabel("Dán văn bản",{exact:true}).check();await cvPage.getByLabel("Nội dung CV",{exact:true}).fill(`${syntheticCV} E2E_LOW_SCORE`);await confirm(cvPage);await cvPage.getByRole("button",{name:"Gửi hồ sơ ứng tuyển",exact:true}).click();
   await expect(cvPage.getByRole("heading",{name:"Chưa đủ điều kiện làm bài",exact:true})).toBeVisible({timeout:20000});const app=await (await cvPage.request.get(`/api/applications/${cvPage.url().split('/').at(-1)}`)).json();expect(app.cv_score).toBe(59);expect(app.eligibility.eligible).toBe(false);
   await candidate.close();

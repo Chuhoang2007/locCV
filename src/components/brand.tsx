@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/loading-link";
 import { Layers2 } from "lucide-react";
 
 export function Brand({ light = false }: { light?: boolean }) {

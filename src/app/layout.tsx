@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { NavigationFeedback } from "@/components/navigation-feedback";
 import "@fontsource/be-vietnam-pro/vietnamese-400.css";
 import "@fontsource/be-vietnam-pro/vietnamese-500.css";
 import "@fontsource/be-vietnam-pro/vietnamese-600.css";
@@ -11,5 +12,5 @@ import "./globals.css";
 
 export const metadata: Metadata = { title: { default: "LocCV — Kết nối năng lực và cơ hội", template: "%s | LocCV" }, description: "Một tài khoản cho hành trình tuyển dụng và tìm việc của bạn." };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="vi"><body><a href="#main-content" className="skip-link">Đến nội dung chính</a>{children}</body></html>;
+  return <html lang="vi"><body><a href="#main-content" className="skip-link">Đến nội dung chính</a><NavigationFeedback>{children}</NavigationFeedback></body></html>;
 }

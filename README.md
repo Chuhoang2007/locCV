@@ -1,5 +1,7 @@
 # LocCV — Phase 5
 
+Cập nhật 03/11/2026: đã bổ sung thanh loading khi chuyển trang, khung nội dung chờ và spinner cho thao tác xử lý; có hỗ trợ giảm chuyển động. Xem [ghi chú kiểm chứng loading](docs/LOADING_FEEDBACK_STATUS.md). Không cần migration database cho cập nhật giao diện này.
+
 Nền tảng tuyển dụng theo bộ thiết kế trong `docs/`. Đã có tài khoản, tin tuyển dụng, tiếp nhận/chấm CV, bài thi/autosave/timer server, kết quả 40/60, quyết định cuối của HR và Inbox riêng người nhận. Phase 5 bổ sung quản lý dữ liệu, health/monitoring, container và CI. Mã nguồn local hoàn chỉnh; trạng thái môi trường thật được ghi riêng.
 
 ## Bắt đầu Phase 5 khi đã có Phase 4
@@ -116,7 +118,7 @@ Mở **http://127.0.0.1:3000**. Khi chưa điền Supabase, trang đăng nhập/
 
 Không đặt secret/service_role hoặc Nine Router key vào biến NEXT_PUBLIC. Server từ chối nếu phát hiện Supabase server key trong cấu hình public. `.env`, `.env.*` đều được gitignore, chỉ `.env.example` được lưu. Auth vẫn hoạt động khi chưa điền Nine Router; HR có thể tạo và lưu nháp thủ công.
 
-Sau khi thay biến môi trường, khởi động lại dev server. Với production, build lại khi thay biến NEXT_PUBLIC vì Next.js đưa giá trị vào bundle lúc build. SITE_URL phải đúng origin sử dụng thực tế: dùng 127.0.0.1 nhất quán hoặc đổi toàn bộ SITE_URL/redirect URLs sang localhost; API mutation kiểm tra Origin để chống CSRF.
+Sau khi thay biến môi trường, khởi động lại dev server. Với production, build lại khi thay biến NEXT_PUBLIC vì Next.js đưa giá trị vào bundle lúc build. API mutation kiểm tra Origin để chống CSRF. Khi SITE_URL là HTTP local, dev server chấp nhận `127.0.0.1` và `localhost` trên đúng cổng đang chạy (kể cả cổng 3001 khi 3000 đã bận); production preview chỉ chấp nhận hai tên này trên cổng đã cấu hình. Khi triển khai Internet, SITE_URL phải khớp chính xác origin HTTPS thực tế. Link email vẫn dùng SITE_URL, vì vậy cấu hình Site URL/redirect URLs trong Supabase Auth phải tương ứng.
 
 ### 2. Chạy migration
 

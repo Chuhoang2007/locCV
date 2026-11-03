@@ -7,6 +7,8 @@ import { createTestDatabase } from "../helpers/database";
 import { sqlRPC } from "../helpers/queue";
 
 const db=await createTestDatabase();
+// Controllable latency belongs only to this synthetic provider, never application code.
+let inboxPause:{promise:Promise<void>;release:()=>void}|null=null;
 const rpcFunctions=(await db.query<{name:string;args:string[]}>(`select p.proname as name,coalesce(p.proargnames,array[]::text[]) as args from pg_proc p join pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname like 'lc_%'`)).rows;
 const columns=new Map<string,Set<string>>();
 for(const table of ["users","jobs","ai_tasks","applications","cv_uploads"]){const {rows}=await db.query<{column_name:string}>("select column_name from information_schema.columns where table_schema='public' and table_name=$1",[table]);columns.set(table,new Set(rows.map(r=>r.column_name)));}
@@ -36,6 +38,7 @@ function reset() {
 }
 reset();
 async function resetDatabase(){
+  inboxPause?.release();inboxPause=null;
   reset();
   await db.exec("truncate public.cv_uploads,public.audit_events,public.idempotency_keys,public.messages,public.ai_tasks,public.applications,public.jobs,auth.users cascade;");
   await db.exec(await readFile("supabase/seed.sql","utf8"));
@@ -70,6 +73,11 @@ const server = createServer(async (req, res) => {
   try {
     const url = new URL(req.url ?? "/", "http://127.0.0.1:54329");
     if (url.pathname === "/health") return respond(res, 200, { fixture: true });
+    if(url.pathname==="/__test/hold-inbox"&&req.method==="POST"){
+      if(!inboxPause){let release!:()=>void;const promise=new Promise<void>(resolve=>{release=resolve;});inboxPause={promise,release};}
+      return respond(res,200,{});
+    }
+    if(url.pathname==="/__test/release-inbox"&&req.method==="POST"){inboxPause?.release();inboxPause=null;return respond(res,200,{});}
     if (url.pathname === "/__test/reset" && req.method === "POST") { await resetDatabase(); return respond(res, 200, {}); }
     if(url.pathname==="/__test/expire-links"&&req.method==="POST"){for(const signed of signedFiles.values())signed.expires=0;return respond(res,200,{});}
     if(url.pathname==="/__test/expire-interview"&&req.method==="POST"){
@@ -147,6 +155,7 @@ const server = createServer(async (req, res) => {
     if (url.pathname.startsWith("/rest/v1/rpc/")) {
       if (req.headers.apikey !== secretKey || token !== secretKey) return respond(res, 403, { code: "42501", message: "Direct client access denied" });
       const name=url.pathname.slice("/rest/v1/rpc/".length);const definition=rpcFunctions.find(f=>f.name===name);
+      if(name==="lc_inbox"&&inboxPause)await inboxPause.promise;
       if(!definition || Object.keys(body).some(key=>!definition.args.includes(key)) || definition.args.some(key=>!(key in body)))return respond(res,400,{code:"PGRST202",message:"Unknown RPC arguments"});
       const args=Object.fromEntries(definition.args.map(key=>[key,body[key]]));
       try{return respond(res,200,await sqlRPC(db,name,args));}catch(e){return respond(res,400,{code:"P0001",message:e instanceof Error?e.message:"RPC_ERROR"});}

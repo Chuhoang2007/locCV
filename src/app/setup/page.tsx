@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/loading-link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Check, Circle } from "lucide-react";
 import { hasPublicEnv, isAccountConfigured } from "@/lib/env";

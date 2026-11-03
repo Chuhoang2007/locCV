@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/loading-link";
 import { ArrowLeft } from "lucide-react";
 import { NewJobForm } from "@/components/new-job-form";
 import { requireViewer } from "@/server/auth";

@@ -22,6 +22,6 @@ export function TaskProgress({task,pollError,onRetry,busy}:{task:TaskDTO|null;po
       {!done && !failed && task.attempt>0 && <span className="task-attempt">Lần kết nối {task.attempt}/{task.max_attempts}</span>}
       {pollError && <p className="field-error">{pollError}</p>}
     </div>
-    {failed&&task.can_retry&&onRetry&&<Button variant="secondary" size="small" disabled={busy} onClick={onRetry}>Thử lại</Button>}
+    {failed&&task.can_retry&&onRetry&&<Button variant="secondary" size="small" disabled={busy} loading={busy} onClick={onRetry}>Thử lại</Button>}
   </section>;
 }

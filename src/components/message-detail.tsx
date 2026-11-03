@@ -1,6 +1,6 @@
 "use client";
 import { useEffect,useState } from "react";
-import Link from "next/link";
+import Link from "@/components/loading-link";
 import { ArrowLeft,ArrowRight } from "lucide-react";
 import type { MessageDetail as Message } from "@/domain/messages";
 import { clientJSON } from "@/lib/client-api";

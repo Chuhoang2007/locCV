@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import Link from "@/components/loading-link";
 import { useCallback,useEffect,useRef,useState } from "react";
 import { ArrowLeft,ArrowRight,Check,CheckCircle2,Clock3,LoaderCircle,Save } from "lucide-react";
 import { interviewDTOSchema,type InterviewDTO } from "@/domain/interview";

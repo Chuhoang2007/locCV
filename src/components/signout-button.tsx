@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useFeedbackRouter as useRouter } from "@/hooks/use-feedback-router";
 import { LogOut, LoaderCircle } from "lucide-react";
 import { clientJSON } from "@/lib/client-api";
 import { Button } from "./ui/button";

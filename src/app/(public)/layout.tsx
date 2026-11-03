@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/loading-link";
 import { Brand } from "@/components/brand";
 import { getSessionUser } from "@/server/auth";
 export const dynamic="force-dynamic";

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/loading-link";
 import { ArrowUpRight,FileUser } from "lucide-react";
 import { applicationStatusLabel,type ApplicationCard } from "@/domain/applications";
 import { Button } from "./ui/button";

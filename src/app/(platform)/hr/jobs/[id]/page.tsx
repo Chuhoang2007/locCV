@@ -1,5 +1,5 @@
 import { ApplicationSummary } from "@/components/application-summary";
-import Link from "next/link";
+import Link from "@/components/loading-link";
 import { notFound } from "next/navigation";
 import { ArrowLeft,ArrowUpRight,Clock3,MapPin } from "lucide-react";
 import { getOwnedJob } from "@/server/dal/jobs";
